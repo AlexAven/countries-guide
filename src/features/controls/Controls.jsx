@@ -5,11 +5,11 @@ import Select from './Select';
 import useRegion from './useRegion';
 
 const optionsData = {
-  Africa: { value: 'Africa', label: 'Africa' },
-  America: { value: 'America', label: 'America' },
-  Asia: { value: 'Asia', label: 'Asia' },
-  Europe: { value: 'Europe', label: 'Europe' },
-  Oceania: { value: 'Oceania', label: 'Oceania' },
+  Africa: { value: 'Africa', label: 'Африка' },
+  America: { value: 'America', label: 'Америка' },
+  Asia: { value: 'Asia', label: 'Азия' },
+  Europe: { value: 'Europe', label: 'Европа' },
+  Oceania: { value: 'Oceania', label: 'Океания' },
 };
 const options = Object.values(optionsData);
 
@@ -33,10 +33,10 @@ const Controls = () => {
       <Search />
       <Select
         options={options}
-        placeholder="Filter by Region"
-        isClearable // хз че это?
-        isSearchable={false} // хз че это?
-        value={optionsData[region]}
+        placeholder="Выбор региона"
+        isClearable
+        isSearchable={false}
+        value={optionsData[region] || ''}
         onChange={handleSelect}
       />
     </Wrapper>

@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const loadCountries = createAsyncThunk(
@@ -34,19 +35,27 @@ const countriesSlice = createSlice({
   },
 });
 
-export const {} = countriesSlice.actions;
 export const countryReducer = countriesSlice.reducer;
 
 // selectors
-export const selectCountriesInfo = (state) => ({
-  status: state.countries.status,
-  error: state.countries.error,
-  qty: state.countries.list.length,
-});
 export const selectAllCountries = (state) => state.countries.list;
-export const selectVisibleCountries = (state, { search = '', region = '' }) => {
-  return state.countries.list.filter(
-    (country) =>
-      country.name.toLowerCase().includes(search.toLowerCase()) && country.region.includes(region),
-  );
-};
+
+// memoized selectors
+export const selectFilters = (state) => state.controls;
+
+export const selectVisibleCountries = createSelector(
+  [selectAllCountries, selectFilters],
+  (countries, { search = '', region = '' }) => {
+    return countries.filter(
+      (country) =>
+        country.name.toLowerCase().includes(search.toLowerCase()) &&
+        country.region.includes(region),
+    );
+  },
+);
+
+export const selectCountriesInfo = createSelector([(state) => state.countries], (countries) => ({
+  status: countries.status,
+  error: countries.error,
+  qty: countries.list.length,
+}));

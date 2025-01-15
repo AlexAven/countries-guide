@@ -47,6 +47,11 @@ const SelectCustom = styled(Select).attrs({
   & > div[id] {
     background-color: var(--colors-ui-base);
   }
+
+  & * svg:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
 `;
 
 export default SelectCustom;

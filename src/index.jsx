@@ -8,11 +8,11 @@ import App from './app/App';
 import './styles/index.css';
 
 createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <StrictMode>
+  <StrictMode>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </StrictMode>
-  </Provider>,
+    </Provider>
+  </StrictMode>,
 );
