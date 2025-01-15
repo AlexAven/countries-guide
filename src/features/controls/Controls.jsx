@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-import Search from '../Search/Search';
-import Select from '../Select/Select';
+import Search from './Search';
+import Select from './Select';
+import useRegion from './useRegion';
 
 const optionsData = {
   Africa: { value: 'Africa', label: 'Africa' },
@@ -25,6 +26,8 @@ const Wrapper = styled.div`
 `;
 
 const Controls = () => {
+  const [region, handleSelect] = useRegion();
+
   return (
     <Wrapper>
       <Search />
@@ -33,8 +36,8 @@ const Controls = () => {
         placeholder="Filter by Region"
         isClearable // хз че это?
         isSearchable={false} // хз че это?
-        value={''} // хз че это?
-        onChange={() => {}} // хз че это?
+        value={optionsData[region]}
+        onChange={handleSelect}
       />
     </Wrapper>
   );

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
 
 import { IoSearch } from 'react-icons/io5';
-import { setSearch } from '../../features/searchSlice';
+import useSearch from './useSearch';
 
 const InputContainer = styled.label`
   background-color: var(--colors-ui-base);
@@ -41,19 +40,12 @@ const Input = styled.input.attrs({
 `;
 
 const Search = () => {
-  const dispatch = useDispatch();
-  const currentSearch = useSelector((state) => state.search.ui.currentSearch);
-
-  const handleChange = (event) => {
-    if (currentSearch || event.target.value.trim()) {
-      dispatch(setSearch(event.target.value));
-    }
-  };
+  const [search, handleSearch] = useSearch();
 
   return (
     <InputContainer>
       <IoSearch />
-      <Input onChange={handleChange} value={currentSearch} />
+      <Input onChange={handleSearch} value={search} />
     </InputContainer>
   );
 };
