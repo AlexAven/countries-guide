@@ -1,18 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 
 import List from '../../components/List/List';
 import Card from '../../components/Card/Card';
+import LoadBar from '../../components/LoadBar';
 import useCountries from './useCountries';
-
-const Status = styled.h2`
-  display: flex;
-  height: 30vh;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-`;
 
 const CountryList = () => {
   const navigate = useNavigate();
@@ -22,7 +13,7 @@ const CountryList = () => {
   return (
     <>
       {error && <h2>Cannot fetch data</h2>}
-      {status === 'loading' && <Status>Загрузка...</Status>}
+      {status === 'loading' && <LoadBar />}
       {status === 'received' && (
         <List>
           {countries.map((c) => {

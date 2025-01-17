@@ -111,46 +111,46 @@ const Info = (props) => {
         <ListGroup>
           <List>
             <ListItem>
-              <b>Native Name:</b> {nativeName}
+              <b>Оригинальное название:</b> {nativeName}
             </ListItem>
             <ListItem>
-              <b>Population</b> {population}
+              <b>Население:</b> {population}
             </ListItem>
             <ListItem>
-              <b>Region:</b> {region}
+              <b>Регион:</b> {region}
             </ListItem>
             <ListItem>
-              <b>Sub Region:</b> {subregion}
+              <b>Подрегион:</b> {subregion}
             </ListItem>
             <ListItem>
-              <b>Capital:</b> {capital}
+              <b>Столица:</b> {capital}
             </ListItem>
           </List>
           <List>
             <ListItem>
-              <b>Top Level Domain</b>{' '}
+              <b>Домен:</b>{' '}
               {topLevelDomain.map((d) => (
-                <span key={d}>{d}</span>
+                <span key={d}>{d} </span>
               ))}
             </ListItem>
             <ListItem>
-              <b>Currency</b>{' '}
+              <b>Валюта:</b>{' '}
               {currencies.map((c) => (
-                <span key={c.code}>{c.name} </span>
+                <span key={c.code}>{c.name}</span>
               ))}
             </ListItem>
             <ListItem>
-              <b>Top Level Domain</b>{' '}
+              <b>Язык:</b>{' '}
               {languages.map((l) => (
-                <span key={l.name}>{l.name}</span>
+                <span key={l.name}>{l.name} </span>
               ))}
             </ListItem>
           </List>
         </ListGroup>
         <Meta>
-          <b>Border Countries</b>
+          <b>Соседи:</b>
           {!borders.length ? (
-            <span>There is no border countries</span>
+            <span>не граничит ни с одной страной</span>
           ) : (
             <TagGroup>
               {[].map((b) => (

@@ -6,6 +6,11 @@ const Wrapper = styled.article`
   box-shadow: var(--shadow);
   cursor: pointer;
   overflow: hidden;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-hover);
+  }
 `;
 
 const CardImage = styled.img`
