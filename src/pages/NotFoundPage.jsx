@@ -5,7 +5,6 @@ import { Container } from '../components/Container';
 
 const Title = styled.h1`
   font-size: 2.5rem;
-  /* text-align: center; */
   height: 30vh;
   display: flex;
   justify-content: center;
