@@ -14,6 +14,12 @@ const Button = styled.button`
 
   color: var(--color-text);
   cursor: pointer;
+
+  &:hover {
+    position: relative;
+    bottom: 2px;
+    right: 2px;
+  }
 `;
 
 export default Button;

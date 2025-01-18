@@ -7,6 +7,13 @@ export const loadCountryByName = createAsyncThunk(
   },
 );
 
+export const loadNeighbors = createAsyncThunk(
+  '@@details/load-neighbors',
+  (borders, { extra: { client, api } }) => {
+    return client.get(api.filterByCode(borders));
+  },
+);
+
 const initialState = {
   currentCountry: null,
   neighbors: [],
@@ -33,6 +40,9 @@ const detailsSlice = createSlice({
       .addCase(loadCountryByName.fulfilled, (state, { payload }) => {
         state.status = 'idle';
         state.currentCountry = payload.data[0];
+      })
+      .addCase(loadNeighbors.fulfilled, (state, { payload }) => {
+        state.neighbors = payload.data.map((country) => country.name);
       });
   },
 });

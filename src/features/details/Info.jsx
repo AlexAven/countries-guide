@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
+import useNeighbors from './useNeighbors';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -26,7 +29,8 @@ const InfoImage = styled.img`
 
 const InfoTitle = styled.h1`
   margin: 0;
-  font-weight: var(--fw-normal);
+  font-weight: var(--fw-bold);
+  font-size: 1.5rem;
 `;
 
 const ListGroup = styled.div`
@@ -99,8 +103,10 @@ const Info = (props) => {
     currencies = [],
     languages = [],
     borders = [],
-    push,
   } = props;
+
+  const navigate = useNavigate();
+  const neighbors = useNeighbors(borders);
 
   return (
     <Wrapper>
@@ -153,8 +159,8 @@ const Info = (props) => {
             <span>не граничит ни с одной страной</span>
           ) : (
             <TagGroup>
-              {[].map((b) => (
-                <Tag key={b} onClick={() => push(`/country/${b}`)}>
+              {neighbors.map((b) => (
+                <Tag key={b} onClick={() => navigate(`/country/${b}`)}>
                   {b}
                 </Tag>
               ))}

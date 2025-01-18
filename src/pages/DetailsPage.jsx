@@ -13,7 +13,7 @@ const DetailsPage = () => {
       <Button onClick={() => navigate(-1)}>
         <IoArrowBack /> Назад
       </Button>
-      <CountryDetails name={id} navigate={navigate} />
+      <CountryDetails name={id} />
     </div>
   );
 };
