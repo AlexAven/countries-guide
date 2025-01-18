@@ -5,6 +5,7 @@ import '../styles/vars.css';
 import Layout from '../components/Layout';
 import MainPage from '../pages/MainPage';
 import DetailsPage from '../pages/DetailsPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="country/:id" element={<DetailsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
